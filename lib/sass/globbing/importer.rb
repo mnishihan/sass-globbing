@@ -85,7 +85,7 @@ class Sass::Globbing::Importer < Sass::Importers::Filesystem
     base = base.gsub(File::ALT_SEPARATOR, File::SEPARATOR) if File::ALT_SEPARATOR
     base_pathname = Pathname.new(base)
     each_globbed_file(name, base_pathname, options) do |filename|
-      contents << "@import #{Pathname.new(filename).relative_path_from(base_pathname.dirname).to_s.inspect};\n"
+      contents << "@import #{filename.to_s.inspect};\n"
     end
     contents = yield if contents.empty?
     return nil if contents.nil? || contents.empty?
